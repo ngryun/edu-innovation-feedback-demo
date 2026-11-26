@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>고성 의견수렴 데모 안내</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+  /* 레이아웃: 위에서 아래로 읽는 시연 안내서. 흐름 요약 → 선생님 화면 4단계 → 담당자 화면 4단계 → 비교·안전장치·준비물.
+     각 단계는 왼쪽에 설명, 오른쪽에 실제 화면을 둔다. */
+  :root {
+    --bg: #f6f5f1;
+    --surface: #ffffff;
+    --frame: #e9e7e0;
+    --ink: #101828;
+    --ink-2: #414b5e;
+    --muted: #667085;
+    --line: #dcd9cf;
+    --accent: #14357a;
+    --accent-ink: #ffffff;
+    --accent-tint: #eaeff9;
+    --teacher: #4f7f17;
+    --staff: #c2472d;
+    --ok: #3f6b12;
+    --warn: #a3322f;
+    --font: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f131b; --surface: #171d29; --frame: #232b3a; --ink: #eef0f4; --ink-2: #c5cbd8;
+      --muted: #98a2b5; --line: #2b3446; --accent: #9db8ff; --accent-ink: #0b1a3d; --accent-tint: #1c2740;
+      --teacher: #a9d36b; --staff: #ff9f86; --ok: #a9d36b; --warn: #ff9a94;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f131b; --surface: #171d29; --frame: #232b3a; --ink: #eef0f4; --ink-2: #c5cbd8;
+    --muted: #98a2b5; --line: #2b3446; --accent: #9db8ff; --accent-ink: #0b1a3d; --accent-tint: #1c2740;
+    --teacher: #a9d36b; --staff: #ff9f86; --ok: #a9d36b; --warn: #ff9a94;
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.65;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-block: 44px 80px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: 64px;
+  }
+  h1, h2, h3 { text-wrap: balance; letter-spacing: -0.02em; margin: 0; line-height: 1.3; }
+  h1 { font-size: clamp(1.9rem, 4.6vw, 2.9rem); font-weight: 700; line-height: 1.2; }
+  h2 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); font-weight: 700; }
+  h3 { font-size: 1.2rem; font-weight: 700; }
+  p, ul, ol, dl, dd, figure { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  .eyebrow { font-size: 0.88rem; font-weight: 600; color: var(--accent); }
+  .lede { font-size: 1.08rem; color: var(--ink-2); max-width: 44rem; }
+  .muted { color: var(--muted); }
+
+  button { font: inherit; cursor: pointer; }
+  button:disabled { cursor: not-allowed; opacity: 0.55; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 10px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); font-weight: 600; white-space: nowrap; }
+  .btn-quiet { height: 34px; padding: 0 12px; border-color: var(--line); background: var(--surface); color: var(--ink); font-size: 0.85rem; }
+  .btn-quiet:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+
+  /* 머리말 */
+  .intro { display: grid; gap: 16px; padding-bottom: 32px; border-bottom: 1px solid var(--ink); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px 28px; margin-top: 12px; }
+  .facts div { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--line); }
+  .facts dt { font-size: 0.8rem; font-weight: 600; color: var(--muted); }
+  .facts dd { font-weight: 600; }
+
+  /* 흐름 요약 */
+  .block { display: grid; gap: 22px; }
+  .block-head { display: grid; gap: 6px; max-width: 44rem; }
+  .flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px; counter-reset: flow; }
+  .flow li { counter-increment: flow; display: grid; gap: 6px; align-content: start; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  .flow li::before { content: counter(flow); font-size: 0.85rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .flow strong { font-weight: 700; }
+  .flow span { font-size: 0.92rem; color: var(--ink-2); }
+
+  /* 단계 */
+  .part-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 600; color: var(--ink-2); }
+  .part-label i { width: 10px; height: 10px; border-radius: 50%; background: var(--dot); }
+  .steps { display: grid; gap: 44px; }
+  .step { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr); gap: 20px 40px; align-items: start; padding-top: 28px; border-top: 1px solid var(--line); }
+  .step-text { display: grid; gap: 12px; min-width: 0; }
+  .step-no { font-size: 0.85rem; font-weight: 700; color: var(--dot); font-variant-numeric: tabular-nums; }
+  .step-text p { color: var(--ink-2); }
+  .points { display: grid; gap: 8px; margin-top: 4px; }
+  .points li { position: relative; padding-left: 16px; font-size: 0.95rem; color: var(--ink-2); }
+  .points li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--dot); }
+  .points b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 780px) { .step { grid-template-columns: minmax(0, 1fr); } }
+
+  figure { display: grid; gap: 8px; min-width: 0; }
+  .shot { display: block; width: 100%; padding: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--frame); overflow: hidden; }
+  .shot img { display: block; width: 100%; height: auto; }
+  .shot.crop { aspect-ratio: 16 / 10; }
+  .shot.crop img { height: 100%; object-fit: cover; object-position: top center; }
+  .shot:hover { border-color: var(--accent); }
+  figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.82rem; color: var(--muted); }
+  .pair { display: grid; gap: 16px; }
+  .phones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .phones .shot { aspect-ratio: 9 / 17; }
+  .phones .shot img { height: 100%; object-fit: cover; object-position: top center; }
+  .phones figcaption { flex-wrap: wrap; }
+
+  /* 비교표 */
+  .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+  table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { padding: 12px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+  tr:last-child th, tr:last-child td { border-bottom: 0; }
+  thead th { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+  tbody th { font-weight: 600; white-space: nowrap; }
+  td { color: var(--ink-2); }
+  td.ours { color: var(--ink); font-weight: 500; background: var(--accent-tint); }
+  thead th.ours { color: var(--accent); background: var(--accent-tint); }
+
+  /* 안전장치·준비물 */
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px; }
+  .list { display: grid; gap: 14px; }
+  .list li { display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .list strong { font-weight: 600; }
+  .list span { font-size: 0.93rem; color: var(--ink-2); }
+  .state { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.75rem; font-weight: 600; color: var(--muted); vertical-align: 1px; white-space: nowrap; }
+  .state.done { border-color: var(--ok); color: var(--ok); }
+
+  .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding-top: 28px; border-top: 1px solid var(--ink); }
+  .footer p { max-width: 38rem; font-size: 0.92rem; color: var(--ink-2); }
+  .footer-actions { display: grid; gap: 6px; justify-items: start; }
+  .status { font-size: 0.85rem; color: var(--muted); min-height: 1.4em; }
+  .status[data-tone="ok"] { color: var(--ok); }
+  .status[data-tone="warn"] { color: var(--warn); }
+
+  dialog { width: min(1100px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); }
+  dialog::backdrop { background: rgb(8 12 20 / 0.6); }
+  .viewer-bar { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .viewer-bar strong { font-weight: 600; min-width: 0; }
+  .viewer-body { background: var(--frame); padding: 14px; }
+  .viewer-body img { display: block; margin: 0 auto; max-width: 100%; border-radius: 8px; }
+
+  @media (prefers-reduced-motion: no-preference) { .shot, .btn-quiet { transition: border-color 0.15s, color 0.15s; } }
+</style>
+
+<div class="wrap">
+  <header class="intro">
+    <p class="eyebrow">고성 교육혁신선도지역 세부계획 수립</p>
+    <h1>교직원 의견수렴 도구<br>데모 안내</h1>
+    <p class="lede">관내 교직원이 다섯 분야에 대한 생각을 남기고 서로의 의견을 읽는 웹 도구입니다. 모인 의견은 담당자 화면에서 분야별로 정리되어 세부계획의 「현장 의견 수렴 결과」로 옮겨 쓸 수 있습니다.</p>
+    <dl class="facts">
+      <div><dt>대상</dt><dd>관내 유·초·중·고 교직원, 교육지원청</dd></div>
+      <div><dt>분야</dt><dd>G-PASS, 국제교육, 공동교육과정, 평화교육, 적정규모 학교</dd></div>
+      <div><dt>참여 방법</dt><dd>공문의 주소와 참여코드, 로그인 없음</dd></div>
+      <div><dt>현재 단계</dt><dd>내부 시연용, 배포 전</dd></div>
+    </dl>
+    <p class="muted" style="font-size:0.88rem">아래 화면의 의견, 학교 이름, 사람 이름은 모두 시연을 위해 지어낸 견본입니다.</p>
+  </header>
+
+  <section class="block">
+    <div class="block-head">
+      <h2>한눈에 보는 흐름</h2>
+      <p class="muted">안내부터 계획 반영까지 네 단계로 진행됩니다.</p>
+    </div>
+    <ol class="flow">
+      <li><strong>공문으로 안내</strong><span>참여 주소와 참여코드를 학교에 보냅니다.</span></li>
+      <li><strong>교직원이 의견 작성</strong><span>분야를 골라 의견을 쓰고, 다른 의견에 공감합니다.</span></li>
+      <li><strong>담당자가 수합·정리</strong><span>현황을 보고 엑셀로 내려받거나 AI로 요약합니다.</span></li>
+      <li><strong>세부계획에 반영</strong><span>분야별 주제, 우려, 실행 제안을 계획서에 옮깁니다.</span></li>
+    </ol>
+  </section>
+
+  <section class="block" style="--dot: var(--teacher)">
+    <div class="block-head">
+      <p class="part-label"><i></i>선생님이 보는 화면</p>
+      <h2>입장부터 의견 등록까지</h2>
+      <p class="muted">휴대전화와 컴퓨터 모두에서 같은 순서로 진행됩니다.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">1단계</p>
+          <h3>참여코드로 입장</h3>
+          <p>공문으로 받은 참여코드와 소속, 직위, 성명을 입력하고 개인정보 수집·이용에 동의합니다.</p>
+          <ul class="points">
+            <li><b>한 번만 입력</b>하면 같은 기기에서는 다시 묻지 않습니다.</li>
+            <li>참여코드가 틀리면 입장할 수 없어 외부인의 장난 입력을 막습니다.</li>
+            <li>소속·직위·성명은 <b>담당자만 본다</b>는 점을 입장 화면에서 안내합니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="01-enter-desktop.png" data-name="입장 화면" data-save="01-입장화면.png"></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">2단계</p>
+          <h3>분야 고르기</h3>
+          <p>다섯 분야가 목록으로 나오고, 분야마다 지금까지 모인 의견 수와 가장 최근 의견이 보입니다.</p>
+          <ul class="points">
+            <li>의견 수가 <b>실시간으로</b> 바뀌어 참여 분위기가 전해집니다.</li>
+            <li>아래쪽에 공감을 많이 받은 의견 세 건이 따로 보입니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="02-fields-desktop.png" data-name="분야 홈" data-save="02-분야홈.png" data-crop></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">3단계</p>
+          <h3>다른 의견 읽고 공감하기</h3>
+          <p>분야 소개와 「생각을 여는 질문」을 먼저 보여 주고, 그 아래에 다른 선생님들의 의견이 카드로 놓입니다.</p>
+          <ul class="points">
+            <li>의견에는 <b>이름이 보이지 않습니다.</b> 내용과 공감 수만 공개됩니다.</li>
+            <li>제안·우려·질문으로 걸러 보거나 최신순·공감순으로 바꿔 볼 수 있습니다.</li>
+            <li>공동교육과정은 초등·중등으로 나누어 볼 수 있습니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="03-board-desktop.png" data-name="분야 보드" data-save="03-분야보드.png" data-crop></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">4단계</p>
+          <h3>내 의견 쓰기</h3>
+          <p>질문을 누르면 바로 작성 칸이 열립니다. 유형을 고르고 한 줄 제목과 내용을 적으면 끝입니다.</p>
+          <ul class="points">
+            <li>등록한 의견은 다른 참여자 화면에 <b>바로 나타납니다.</b></li>
+            <li>수렴 기간에는 내 의견을 고치거나 지울 수 있습니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="04-composer-desktop.png" data-name="의견 쓰기" data-save="04-의견쓰기.png"></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">휴대전화</p>
+          <h3>모바일에서도 같은 화면</h3>
+          <p>공문의 주소를 휴대전화로 열어도 입장, 분야 선택, 의견 작성이 그대로 됩니다. 앱 설치는 필요 없습니다.</p>
+        </div>
+        <div class="phones">
+          <figure data-shot="05-enter-mobile.png" data-name="입장 (모바일)" data-save="05-입장화면-모바일.png"></figure>
+          <figure data-shot="06-fields-mobile.png" data-name="분야 홈 (모바일)" data-save="06-분야홈-모바일.png"></figure>
+          <figure data-shot="07-board-mobile.png" data-name="분야 보드 (모바일)" data-save="07-분야보드-모바일.png"></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block" style="--dot: var(--staff)">
+    <div class="block-head">
+      <p class="part-label"><i></i>담당자가 보는 화면</p>
+      <h2>모인 의견을 계획서의 근거로</h2>
+      <p class="muted">지정한 담당자 Google 계정으로만 들어갈 수 있습니다.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">5단계</p>
+          <h3>현황 한눈에 보기</h3>
+          <p>모인 의견 수, 참여한 사람과 학교 수, 분야·일자·소속·직위별 분포를 실시간으로 봅니다.</p>
+          <ul class="points">
+            <li>어느 분야와 학교급의 참여가 적은지 보고 <b>추가 안내</b>를 할 수 있습니다.</li>
+            <li>분야마다 제안·우려·질문이 몇 건인지 함께 나옵니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="09-admin-overview.png" data-name="관리자 현황" data-save="09-관리자현황.png"></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">6단계</p>
+          <h3>의견 목록과 엑셀 내려받기</h3>
+          <p>이 화면에서만 의견에 작성자의 소속·직위·성명이 붙어 보입니다. 검색하고 걸러 본 결과를 그대로 엑셀로 받습니다.</p>
+          <ul class="points">
+            <li>부적절한 의견은 <b>숨기기</b>로 참여자 화면에서 내릴 수 있습니다.</li>
+            <li>엑셀에는 분야, 유형, 내용, 공감 수, 작성자 정보가 한 줄씩 담깁니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="10-admin-ideas.png" data-name="의견 목록" data-save="10-의견목록.png"></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">7단계</p>
+          <h3>AI로 분야별 정리</h3>
+          <p>「분석 실행」을 누르면 Claude가 그 분야의 의견을 주제별로 묶고 요약, 실행 제안, 우려, 대표 인용, 핵심어를 뽑습니다.</p>
+          <ul class="points">
+            <li>결과를 <b>텍스트로 복사</b>하면 □ ○ 개조식으로 정리되어 계획서에 붙여 넣기 좋습니다.</li>
+            <li>주제마다 근거가 된 의견을 펼쳐 원문을 확인할 수 있습니다.</li>
+            <li>이 화면의 보고서 내용은 화면 구성을 보여 주려고 손으로 쓴 견본입니다.</li>
+          </ul>
+        </div>
+        <figure data-shot="13-admin-analysis-report.png" data-name="AI 분석 보고서" data-save="13-AI분석보고서.png" data-crop></figure>
+      </article>
+
+      <article class="step">
+        <div class="step-text">
+          <p class="step-no">8단계</p>
+          <h3>수렴 열고 닫기, 결과 공개</h3>
+          <p>참여코드를 정하고, 의견 수렴을 켜고 끄고, AI 분석 결과를 참여자에게 공개할지 정합니다.</p>
+          <ul class="points">
+            <li>마감하면 참여자는 <b>읽기와 공감만</b> 할 수 있습니다.</li>
+            <li>분석 결과를 공개하면 분야 화면 위쪽에 요약이 나타납니다(아래 화면).</li>
+          </ul>
+        </div>
+        <div class="pair">
+          <figure data-shot="12-admin-settings.png" data-name="설정" data-save="12-설정.png"></figure>
+          <figure data-shot="14-board-digest.png" data-name="공개된 의견 요약" data-save="14-의견요약.png"></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="block-head">
+      <h2>패들렛·설문과 무엇이 다른가</h2>
+      <p class="muted">열어 보는 패들렛의 장점과 구조화되는 설문의 장점을 합쳤습니다.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">기준</th><th scope="col">패들렛</th><th scope="col">설문지</th><th scope="col" class="ours">이 도구</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">서로의 의견 보기</th><td>가능</td><td>불가</td><td class="ours">가능, 공감까지</td></tr>
+          <tr><th scope="row">분야·소속·직위별 정리</th><td>어려움</td><td>가능</td><td class="ours">자동 집계</td></tr>
+          <tr><th scope="row">작성자 정보</th><td>모두에게 보이거나 익명</td><td>담당자만</td><td class="ours">담당자만, 내용은 공개</td></tr>
+          <tr><th scope="row">수합 후 정리</th><td>수작업</td><td>엑셀 수작업</td><td class="ours">엑셀 + AI 요약</td></tr>
+          <tr><th scope="row">준비 부담</th><td>거의 없음</td><td>거의 없음</td><td class="ours">배포와 점검 필요</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="two">
+    <div class="block">
+      <h2>개인정보와 안전장치</h2>
+      <ul class="list">
+        <li><strong>이름은 담당자만 봅니다</strong><span>다른 참여자에게는 의견 내용과 공감 수만 보입니다. 보안 규칙 테스트 22건으로 확인했습니다.</span></li>
+        <li><strong>AI에는 작성자 정보를 보내지 않습니다</strong><span>의견의 유형, 제목, 내용, 공감 수만 전달합니다.</span></li>
+        <li><strong>건수는 시스템이 직접 셉니다</strong><span>주제별 건수와 핵심어 횟수는 AI가 아니라 시스템이 세고, 인용문은 원문과 일치하는 것만 남깁니다.</span></li>
+        <li><strong>수렴이 끝나면 파기합니다</strong><span>엑셀로 내려받은 뒤 안내한 보유 기간에 맞춰 작성자 정보를 지웁니다.</span></li>
+      </ul>
+    </div>
+    <div class="block">
+      <h2>시작하려면 필요한 것</h2>
+      <ul class="list">
+        <li><strong>화면과 기능 구현 <span class="state done">완료</span></strong><span>참여자·관리자 흐름을 로컬 환경에서 21개 항목으로 점검했습니다.</span></li>
+        <li><strong>Firebase 프로젝트와 요금제 <span class="state">필요</span></strong><span>카드 등록이 필요한 종량 요금제입니다. 관내 교직원 규모에서는 무료 사용량 안에 들 것으로 예상합니다.</span></li>
+        <li><strong>Anthropic API 키 <span class="state">필요</span></strong><span>AI 분석에 씁니다. 실제 호출은 아직 해 보지 않았고, 비용은 분석 1회에 수백 원 수준으로 예상합니다.</span></li>
+        <li><strong>개인정보 보유 기간 확정 <span class="state">필요</span></strong><span>입장 화면의 안내 문구에 들어갑니다.</span></li>
+        <li><strong>학교 업무망 접속 확인 <span class="state">필요</span></strong><span>배포한 주소가 학교망에서 열리는지 먼저 봅니다.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p id="footer-note">화면 캡처 14장은 각 화면 아래의 버튼으로 한 장씩 받거나 한 번에 받을 수 있습니다. 화면을 누르면 크게 보입니다.</p>
+    <div class="footer-actions">
+      <button class="btn" id="save-all" type="button" hidden>화면 14장 모두 받기 (zip)</button>
+      <p class="status" id="status" role="status"></p>
+    </div>
+  </footer>
+</div>
+
+<dialog id="viewer" aria-labelledby="viewer-title">
+  <div class="viewer-bar">
+    <strong id="viewer-title"></strong>
+    <button class="btn btn-quiet" id="viewer-close" type="button">닫기</button>
+  </div>
+  <div class="viewer-body"><img id="viewer-img" alt=""></div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+  const SHOT_DIR = 'screenshots/'
+  // 본문에 쓰지 않은 화면도 전체 받기에는 넣는다.
+  const EXTRA = [
+    { file: '08-admin-login.png', save: '08-담당자로그인.png' },
+    { file: '11-admin-analysis-empty.png', save: '11-AI분석-실행전.png' },
+  ]
+
+  const statusEl = document.getElementById('status')
+  const saveAllButton = document.getElementById('save-all')
+  const viewer = document.getElementById('viewer')
+  const shots = []
+  const saveButtons = []
+  let downloads = null
+
+  function setStatus(text, tone) {
+    statusEl.textContent = text
+    if (tone) statusEl.dataset.tone = tone
+    else delete statusEl.dataset.tone
+  }
+
+  function explain(error) {
+    const code = error && error.code
+    if (code === 'declined') return '저장을 취소했습니다.'
+    if (code === 'rate_limited') return '잠시 뒤에 다시 눌러 주세요.'
+    if (code === 'host_unavailable') return '이 앱에서는 저장할 수 없습니다. 브라우저나 컴퓨터에서 열어 주세요.'
+    return '저장하지 못했습니다.'
+  }
+
+  async function fetchShot(file) {
+    const response = await fetch(SHOT_DIR + file)
+    if (!response.ok) throw new Error('missing')
+    return response.blob()
+  }
+
+  async function saveOne(shot, button) {
+    button.disabled = true
+    try {
+      await downloads.save({ filename: shot.save, data: await fetchShot(shot.file) })
+      setStatus(shot.save + ' 저장했습니다.', 'ok')
+    } catch (error) {
+      setStatus(explain(error), 'warn')
+    } finally {
+      button.disabled = false
+    }
+  }
+
+  async function saveAll() {
+    saveAllButton.disabled = true
+    setStatus('파일을 묶는 중입니다…')
+    try {
+      const zip = new JSZip()
+      for (const shot of [...shots, ...EXTRA]) zip.file(shot.save, await fetchShot(shot.file))
+      // PNG는 이미 압축되어 있어 다시 압축하지 않는다.
+      const blob = await zip.generateAsync({ type: 'blob', compression: 'STORE' })
+      await downloads.save({ filename: '고성-의견수렴-예시화면.zip', data: blob })
+      setStatus('14장을 한 파일로 저장했습니다.', 'ok')
+    } catch (error) {
+      setStatus(explain(error), 'warn')
+    } finally {
+      saveAllButton.disabled = false
+    }
+  }
+
+  function openViewer(shot) {
+    document.getElementById('viewer-title').textContent = shot.name
+    const img = document.getElementById('viewer-img')
+    img.src = SHOT_DIR + shot.file
+    img.alt = shot.name + ' 화면'
+    viewer.showModal()
+  }
+
+  for (const figure of document.querySelectorAll('figure[data-shot]')) {
+    const shot = { file: figure.dataset.shot, name: figure.dataset.name, save: figure.dataset.save }
+    shots.push(shot)
+
+    const open = document.createElement('button')
+    open.type = 'button'
+    open.className = 'crop' in figure.dataset ? 'shot crop' : 'shot'
+    open.setAttribute('aria-label', shot.name + ' 크게 보기')
+    const img = document.createElement('img')
+    img.src = SHOT_DIR + shot.file
+    img.alt = shot.name + ' 화면'
+    img.loading = 'lazy'
+    open.append(img)
+    open.addEventListener('click', () => openViewer(shot))
+
+    const caption = document.createElement('figcaption')
+    const label = document.createElement('span')
+    label.textContent = shot.name
+    const save = document.createElement('button')
+    save.type = 'button'
+    save.className = 'btn btn-quiet'
+    save.textContent = 'PNG 받기'
+    save.hidden = true
+    save.addEventListener('click', () => saveOne(shot, save))
+    saveButtons.push(save)
+    caption.append(label, save)
+    figure.append(open, caption)
+  }
+
+  document.getElementById('viewer-close').addEventListener('click', () => viewer.close())
+  viewer.addEventListener('click', (event) => {
+    if (event.target === viewer) viewer.close()
+  })
+  saveAllButton.addEventListener('click', saveAll)
+
+  // 일반 웹사이트로 열었을 때는 브라우저의 내려받기를 그대로 쓴다.
+  const linkSaver = {
+    async save({ filename, data }) {
+      const url = URL.createObjectURL(data)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = filename
+      document.body.append(link)
+      link.click()
+      link.remove()
+      setTimeout(() => URL.revokeObjectURL(url), 10000)
+    },
+  }
+
+  // Claude 화면 안에서는 뷰어가 허용할 때만 저장 기능을 켠다.
+  const inViewer = !!(window.claude && window.claude.use)
+  const ready = inViewer ? window.claude.use('downloads') : Promise.resolve(null)
+  ready
+    .catch(() => null)
+    .then((namespace) => {
+      downloads = namespace || (!inViewer && location.protocol.startsWith('http') ? linkSaver : null)
+      if (!downloads) {
+        document.getElementById('footer-note').textContent =
+          '화면을 누르면 크게 보입니다. 화면 캡처 원본 14장은 프로젝트의 docs/screenshots 폴더에 있습니다.'
+        return
+      }
+      saveAllButton.hidden = false
+      for (const button of saveButtons) button.hidden = false
+    })
+</script>
+</body>
+</html>
