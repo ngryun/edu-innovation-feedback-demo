@@ -134,14 +134,11 @@
   td.ours { color: var(--ink); font-weight: 500; background: var(--accent-tint); }
   thead th.ours { color: var(--accent); background: var(--accent-tint); }
 
-  /* 안전장치·준비물 */
-  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 40px; }
-  .list { display: grid; gap: 14px; }
+  /* 안전장치 */
+  .list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px 40px; }
   .list li { display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid var(--line); }
   .list strong { font-weight: 600; }
   .list span { font-size: 0.93rem; color: var(--ink-2); }
-  .state { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.75rem; font-weight: 600; color: var(--muted); vertical-align: 1px; white-space: nowrap; }
-  .state.done { border-color: var(--ok); color: var(--ok); }
 
   .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding-top: 28px; border-top: 1px solid var(--ink); }
   .footer p { max-width: 38rem; font-size: 0.92rem; color: var(--ink-2); }
@@ -349,8 +346,7 @@
     </div>
   </section>
 
-  <section class="two">
-    <div class="block">
+  <section class="block">
       <h2>개인정보와 안전장치</h2>
       <ul class="list">
         <li><strong>이름은 담당자만 봅니다</strong><span>다른 참여자에게는 의견 내용과 공감 수만 보입니다. 보안 규칙 테스트 22건으로 확인했습니다.</span></li>
@@ -358,17 +354,6 @@
         <li><strong>건수는 시스템이 직접 셉니다</strong><span>주제별 건수와 핵심어 횟수는 AI가 아니라 시스템이 세고, 인용문은 원문과 일치하는 것만 남깁니다.</span></li>
         <li><strong>수렴이 끝나면 파기합니다</strong><span>엑셀로 내려받은 뒤 안내한 보유 기간에 맞춰 작성자 정보를 지웁니다.</span></li>
       </ul>
-    </div>
-    <div class="block">
-      <h2>시작하려면 필요한 것</h2>
-      <ul class="list">
-        <li><strong>화면과 기능 구현 <span class="state done">완료</span></strong><span>참여자·관리자 흐름을 로컬 환경에서 21개 항목으로 점검했습니다.</span></li>
-        <li><strong>Firebase 프로젝트와 요금제 <span class="state">필요</span></strong><span>카드 등록이 필요한 종량 요금제입니다. 관내 교직원 규모에서는 무료 사용량 안에 들 것으로 예상합니다.</span></li>
-        <li><strong>Anthropic API 키 <span class="state">필요</span></strong><span>AI 분석에 씁니다. 실제 호출은 아직 해 보지 않았고, 비용은 분석 1회에 수백 원 수준으로 예상합니다.</span></li>
-        <li><strong>개인정보 보유 기간 확정 <span class="state">필요</span></strong><span>입장 화면의 안내 문구에 들어갑니다.</span></li>
-        <li><strong>학교 업무망 접속 확인 <span class="state">필요</span></strong><span>배포한 주소가 학교망에서 열리는지 먼저 봅니다.</span></li>
-      </ul>
-    </div>
   </section>
 
   <footer class="footer">
