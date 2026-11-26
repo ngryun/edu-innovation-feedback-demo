@@ -167,7 +167,13 @@
   .btn:hover:not(:disabled) { background: #1633d6; }
   .btn.small { height: 38px; padding: 0 16px; font-size: 0.9rem; }
   .btn.ghost { background: var(--mist); color: var(--ink); }
-  .outro .btn { margin-top: 32px; }
+  .outro .btn { margin-top: 32px; text-decoration: none; }
+  .outro .address { margin-top: 14px; font-size: 0.95rem; color: var(--on-night-2); user-select: all; }
+  .outro .fineprint { margin-top: 56px; font-size: 0.92rem; }
+  .outro .btn.ghost-night { margin-top: 16px; height: 44px; padding: 0 20px; background: transparent; border: 1px solid rgb(255 255 255 / 0.3); color: var(--on-night); font-size: 0.95rem; }
+  .outro .btn.ghost-night:hover:not(:disabled) { background: rgb(255 255 255 / 0.08); }
+  .hero-cta { margin-top: 30px; }
+  .hero-cta .btn { text-decoration: none; }
   .status { margin-top: 14px; min-height: 1.5em; font-size: 0.92rem; color: var(--on-night-2); }
 
   dialog { width: min(1180px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 0; border-radius: 18px; background: var(--white); color: var(--ink); box-shadow: 0 40px 100px rgb(0 0 0 / 0.4); }
@@ -207,11 +213,12 @@
     <p class="eyebrow">고성 교육혁신선도지역 세부계획 수립</p>
     <h1>선생님의 생각이<br>계획이 됩니다.</h1>
     <p class="lede">관내 교직원이 다섯 분야에 대한 생각을 남기고 서로의 의견을 읽습니다. 모인 의견은 분야별로 정리되어 세부계획의 근거가 됩니다.</p>
-    <p class="sample">교직원 의견수렴 도구 데모 · 화면 속 의견과 학교, 이름은 모두 지어낸 견본입니다.</p>
+    <p class="hero-cta"><a class="btn" href="https://edu-innovation.web.app" target="_blank" rel="noreferrer">의견수렴 페이지 열기</a></p>
+    <p class="sample">참여코드는 따로 안내합니다 · 아래 화면 속 의견과 학교, 이름은 모두 지어낸 견본입니다.</p>
     <div class="hero-shot" id="hero-shot">
-      <button class="browser" type="button" data-shot="02-fields-desktop.png" aria-label="분야 홈 화면 크게 보기">
+      <button class="browser" type="button" data-shot="01-enter-desktop.png" aria-label="입장 화면 크게 보기">
         <span class="browser-bar"><i></i><i></i><i></i></span>
-        <span class="screen"><img src="screenshots/02-fields-desktop.png" alt="다섯 분야와 분야별 의견 수가 보이는 분야 홈 화면"></span>
+        <span class="screen"><img src="screenshots/01-enter-desktop.png" alt="고성의 바다 사진을 배경으로 한 입장 화면"></span>
       </button>
     </div>
     <ul class="facts">
@@ -248,10 +255,10 @@
           <div class="step-text">
             <p class="step-label">입장</p>
             <h3>코드 하나로 들어옵니다.</h3>
-            <p>공문으로 받은 참여코드와 소속, 직위, 성명만 입력합니다. 로그인도 앱 설치도 없습니다.</p>
-            <p class="fine">한 번 입력하면 같은 기기에서는 다시 묻지 않습니다.</p>
+            <p>공문으로 받은 참여코드를 넣고, 소속 학교는 목록에서 고릅니다. 직위와 성명을 적으면 끝입니다. 로그인도 앱 설치도 없습니다.</p>
+            <p class="fine">한 번 입력하면 같은 기기에서는 다시 묻지 않습니다. 배경에는 고성의 풍경과 학교 행사 사진이 천천히 넘어갑니다.</p>
           </div>
-          <figure class="step-figure"><button class="browser" type="button" data-shot="01-enter-desktop.png"><span class="browser-bar"><i></i><i></i><i></i></span><span class="screen"><img src="screenshots/01-enter-desktop.png" alt="참여코드와 소속, 직위, 성명을 입력하는 입장 화면" loading="lazy"></span></button></figure>
+          <figure class="step-figure"><button class="browser" type="button" data-shot="01b-enter-filled.png"><span class="browser-bar"><i></i><i></i><i></i></span><span class="screen"><img src="screenshots/01b-enter-filled.png" alt="참여코드를 넣고 목록에서 학교를 고른 입장 화면" loading="lazy"></span></button></figure>
         </article>
         <article class="step">
           <div class="step-text">
@@ -341,6 +348,7 @@
             <p class="step-label">설정</p>
             <h3>열고, 닫고, 공개합니다.</h3>
             <p>참여코드를 정하고 의견 수렴을 켜고 끕니다. 마감하면 참여자는 읽기와 공감만 할 수 있습니다.</p>
+            <p class="fine">참여 주소의 QR 코드를 내려받아 공문이나 안내장에 넣을 수 있습니다.</p>
           </div>
           <figure class="step-figure"><button class="browser" type="button" data-shot="12-admin-settings.png"><span class="browser-bar"><i></i><i></i><i></i></span><span class="screen"><img src="screenshots/12-admin-settings.png" alt="참여코드와 수렴 상태를 정하는 설정 화면" loading="lazy"></span></button></figure>
         </article>
@@ -374,7 +382,7 @@
           <tr><th scope="row">분야·소속·직위별 정리</th><td>어려움</td><td>가능</td><td class="ours">자동 집계</td></tr>
           <tr><th scope="row">작성자 정보</th><td>모두에게 보이거나 익명</td><td>담당자만</td><td class="ours">담당자만, 내용은 공개</td></tr>
           <tr><th scope="row">수합 후 정리</th><td>수작업</td><td>엑셀 수작업</td><td class="ours">엑셀 + AI 요약</td></tr>
-          <tr><th scope="row">준비 부담</th><td>거의 없음</td><td>거의 없음</td><td class="ours">배포와 점검 필요</td></tr>
+          <tr><th scope="row">준비 부담</th><td>거의 없음</td><td>거의 없음</td><td class="ours">직접 운영 필요</td></tr>
         </tbody>
       </table>
     </div>
@@ -398,9 +406,12 @@
 
 <footer class="band night outro">
   <div class="inner">
-    <h2 data-reveal>화면을 더 자세히.</h2>
-    <p id="footer-note">어느 화면이든 누르면 크게 보이고 PNG로 받을 수 있습니다. 14장을 한 번에 받을 수도 있습니다.</p>
-    <button class="btn" id="save-all" type="button" hidden>화면 14장 모두 받기 (zip)</button>
+    <h2 data-reveal>직접 들어가 보세요.</h2>
+    <p>참여코드를 넣으면 바로 의견을 쓰고 읽을 수 있습니다.</p>
+    <a class="btn" href="https://edu-innovation.web.app" target="_blank" rel="noreferrer">의견수렴 페이지 열기</a>
+    <p class="address">https://edu-innovation.web.app</p>
+    <p id="footer-note" class="fineprint">이 안내의 화면은 어느 것이든 누르면 크게 보이고 PNG로 받을 수 있습니다.</p>
+    <button class="btn ghost-night" id="save-all" type="button" hidden>화면 15장 모두 받기 (zip)</button>
     <p class="status" id="status" role="status"></p>
   </div>
 </footer>
@@ -421,6 +432,7 @@
   const SHOT_DIR = 'screenshots/'
   const SHOTS = {
     '01-enter-desktop.png': { name: '입장 화면', save: '01-입장화면.png' },
+    '01b-enter-filled.png': { name: '입장 화면 (학교 선택)', save: '01b-입장화면-학교선택.png' },
     '02-fields-desktop.png': { name: '분야 홈', save: '02-분야홈.png' },
     '03-board-desktop.png': { name: '분야 보드', save: '03-분야보드.png' },
     '04-composer-desktop.png': { name: '의견 쓰기', save: '04-의견쓰기.png' },
@@ -497,7 +509,7 @@
       // PNG는 이미 압축되어 있어 다시 압축하지 않는다.
       const blob = await zip.generateAsync({ type: 'blob', compression: 'STORE' })
       await downloads.save({ filename: '고성-의견수렴-예시화면.zip', data: blob })
-      statusEl.textContent = '14장을 한 파일로 저장했습니다.'
+      statusEl.textContent = '15장을 한 파일로 저장했습니다.'
     } catch (error) {
       statusEl.textContent = explain(error)
     } finally {
@@ -527,7 +539,7 @@
       downloads = namespace || (!inViewer && location.protocol.startsWith('http') ? linkSaver : null)
       if (!downloads) {
         document.getElementById('footer-note').textContent =
-          '어느 화면이든 누르면 크게 보입니다. 화면 캡처 원본 14장은 프로젝트의 docs/screenshots 폴더에 있습니다.'
+          '이 안내의 화면은 어느 것이든 누르면 크게 보입니다. 화면 캡처 원본 15장은 프로젝트의 docs/screenshots 폴더에 있습니다.'
         return
       }
       saveAllButton.hidden = false
